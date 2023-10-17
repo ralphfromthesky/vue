@@ -83,6 +83,5 @@ export default {
 .paddingLeft {
   padding-left: 5.1%;
 }
-.paddingRight {
-}
+
 </style>
