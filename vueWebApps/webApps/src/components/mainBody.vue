@@ -1,11 +1,13 @@
 <template>
   <div class="mainBody">
-    <todoAppsVue class="todos"/>
+    <!-- <todoAppsVue class="todos"/>  -->
+       <RouterView />
+
   </div>
 </template>
 
 <script>
-import todoAppsVue from "../apps/todoApps.vue";
+import todoAppsVue from "../views/todoApps.vue";
 
 export default {
   name: "main-body",

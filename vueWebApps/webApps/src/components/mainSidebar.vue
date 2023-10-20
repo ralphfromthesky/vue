@@ -3,15 +3,19 @@
     <div class="sidebarBx">
       <i class="bx bx-menu" id="sidebarIcon" @click="$emit('slideThis')"></i>
     </div>
-    
+
     <div class="sideBarIcon">
-      <i class='bx bx-home' ></i>
-      <i class='bx bx-edit' ></i>
-      <i class='bx bx-calculator' ></i>
-      <i class='bx bxs-cloud-lightning' ></i>
-      <i class='bx bxl-deezer' ></i>
-      <i class='bx bx-task'></i>
-      <i class='bx bx-calendar-edit' ></i>
+      <router-link to="/home">
+        <i class="bx bx-home"></i>
+      </router-link>
+      <!-- <router-link to="/todo"><i class="bx bx-edit"></i></router-link> -->
+      <router-link to="/calculator">
+        <i class="bx bx-calculator"></i>
+      </router-link>
+      <router-link to="/weather"><i class="bx bxs-cloud-lightning"></i></router-link>
+      <i class="bx bxl-deezer"></i>
+      <i class="bx bx-task"></i>
+      <i class="bx bx-calendar-edit"></i>
     </div>
   </div>
 </template>
@@ -19,19 +23,14 @@
 <script>
 export default {
   name: "sidebar",
-  emits: ['slideThis'],
-  setup () {
-    
-
-    return {
-
-    }
-  }
+  emits: ["slideThis"],
+  setup() {
+    return {};
+  },
 };
 </script>
 
 <style scoped>
-
 .bx {
   font-size: 50px;
 }
@@ -51,12 +50,11 @@ export default {
   justify-content: center;
 }
 .sideBarIcon {
-width: 100%;
-height: 100%;
+  width: 100%;
+  height: 100%;
   display: flex;
-flex-direction: column;
-justify-content: space-evenly;
-align-items: center;
-
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 }
 </style>

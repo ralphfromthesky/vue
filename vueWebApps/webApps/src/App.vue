@@ -83,5 +83,8 @@ export default {
 .paddingLeft {
   padding-left: 5.1%;
 }
+.bx {
+  cursor: pointer;
+}
 
 </style>
