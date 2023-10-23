@@ -1,6 +1,13 @@
 <template>
   <div>
-    <h1> i am ralph santolorin</h1>
+    <div class="homeContainer">
+      <div class="descriptionContainer">
+
+      </div>
+      <div class="imageContainer">
+        <img src="../images/myPhoto.jpg" alt="">
+      </div>
+    </div>
   </div>
 </template>
 
@@ -8,5 +15,8 @@
 export default {};
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
+img {
+  height: 40vh;
+}
 </style>

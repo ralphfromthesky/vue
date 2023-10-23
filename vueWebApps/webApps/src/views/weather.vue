@@ -8,10 +8,7 @@
       </form>
 
       <div class="cityDetail">
-        {{ temp }}
-        {{ weather }}
-        {{ cityName }}
-        {{ cityTime }}
+        {{ cityName }} - {{ temp }} - {{ weather }} 
       </div>
     </div>
   </div>
@@ -28,7 +25,6 @@ export default {
     const temp = ref("");
     const weather = ref("");
     const cityName = ref("");
-    const cityTime = ref();
     const error = ref("");
 
     const api_url = computed(() => {
@@ -43,6 +39,9 @@ export default {
         }
         const response = await axios.get(api_url.value);
         console.log(response.data);
+        temp.value = response.data.main.temp;
+        weather.value = response.data.weather[0].main;
+        cityName.value = response.data.name;
       } catch (error) {
         console.log(`errot: ${error}`);
       }
@@ -55,7 +54,6 @@ export default {
       temp,
       weather,
       cityName,
-      cityTime,
       searchWeather,
       error,
     };

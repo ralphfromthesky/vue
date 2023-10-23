@@ -12,10 +12,12 @@
       <router-link to="/calculator">
         <i class="bx bx-calculator"></i>
       </router-link>
-      <router-link to="/weather"><i class="bx bxs-cloud-lightning"></i></router-link>
-      <i class="bx bxl-deezer"></i>
-      <i class="bx bx-task"></i>
-      <i class="bx bx-calendar-edit"></i>
+      <router-link to="/weather"
+        ><i class="bx bxs-cloud-lightning"></i
+      ></router-link>
+      <router-link to="/music"> <i class="bx bxl-deezer"></i> </router-link>
+      <router-link to="quizz"> <i class="bx bx-task"></i> </router-link>
+      <router-link to="/timer"><i class="bx bxs-watch"></i> </router-link>
     </div>
   </div>
 </template>
