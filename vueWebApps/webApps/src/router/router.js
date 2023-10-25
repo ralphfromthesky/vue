@@ -8,6 +8,7 @@ import quizzApp from  '../views/quizzApp.vue'
 import timer from '../views/timer.vue';
 
 
+
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [

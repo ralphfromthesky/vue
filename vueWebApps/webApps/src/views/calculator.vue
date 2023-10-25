@@ -25,7 +25,21 @@
       </div>
     </div>
     <div class="descriptions">
-      <h1>this is the calculator</h1>
+      <h3>
+        Calculator <br> <br> This sleek and user-friendly calculator provides you with
+        essential mathematical functions at your fingertips. It allows you to
+        perform addition, subtraction, multiplication, and division, making it
+        perfect for both simple and complex calculations. <br><br> Key Features: <br><br> Clear
+        (AC): Reset your calculations with a single click. <br> Sign (+/-): Quickly
+        switch between positive and negative numbers. <br> Percent (%): Calculate
+        percentages effortlessly. <br> Operators: Addition (+), Subtraction (-),
+        Multiplication (*), and Division (/) buttons are readily available.
+        Digits: Enter numbers from 0 to 9 with ease. <br> Decimal (.): Add decimal
+        points to your numbers as needed. <br> Equal (=): Obtain the results of your
+        calculations at the press of a button. Whether you need to crunch
+        numbers for work, school, or everyday tasks, this calculator simplifies
+        the process, ensuring accurate results every time.
+      </h3>
     </div>
   </div>
 </template>
@@ -126,10 +140,12 @@ export default {
   <style scoped>
 .main-container {
   display: flex;
+  width: 60vw;
+  align-items: center;
 }
 .container {
-    padding: 5px;
-    border-radius: 5px;
+  padding: 5px;
+  border-radius: 5px;
 }
 .calculator {
   margin: 0 auto;
@@ -142,6 +158,8 @@ export default {
   background-color: black;
   padding: 10px;
   border-radius: 10px;
+  box-shadow: 11px 11px 22px #797979, -11px -11px 22px #ffffff;
+
 }
 
 .display {
@@ -163,6 +181,9 @@ export default {
 .operator {
   background-color: orange;
   color: white;
+}
+.descriptions {
+  padding: 20px;
 }
 </style>
   

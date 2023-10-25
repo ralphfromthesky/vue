@@ -32,8 +32,10 @@ export default {
 <style scoped>
 .mainSidebarLabel {
   height: 100vh;
-  background-color: blue;
   width: 10vw;
+background: #e0e0e0;
+box-shadow:  20px 20px 60px #bebebe,
+             -20px -20px 60px #ffffff;
 }
 .mainSidebarLabelBx {
   display: flex;

@@ -13,6 +13,7 @@ export default {
 <style scoped>
 .mainFooter {
   height: 10vh;
-  border: 2px solid red;
+  border-top: 2px solid rgb(190, 185, 185);
+
 }
 </style>

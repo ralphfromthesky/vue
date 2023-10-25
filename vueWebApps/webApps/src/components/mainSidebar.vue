@@ -44,8 +44,9 @@ export default {
 
 .sidebar {
   height: 100vh;
-  background-color: red;
-  width: 5vw;
+  width: 4vw;
+box-shadow:  20px 20px 60px #bebebe,
+             -20px -20px 60px #ffffff;
 }
 .sidebarBx {
   display: flex;

@@ -53,13 +53,15 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Sometype Mono', monospace;
 }
+
 .mainApp {
   display: flex;
 }
 .container {
   width: 100%;
-  margin-left: 5%;
+  margin-left: 4%;
   transition: .4s;
 }
 .sidebarContainer {
@@ -85,6 +87,8 @@ export default {
 }
 .bx {
   cursor: pointer;
+  color: rgb(59, 57, 57);
 }
+
 
 </style>
