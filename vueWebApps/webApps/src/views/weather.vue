@@ -1,6 +1,6 @@
 <template>
   <div class="mainContainer">
-    <div class="weatherApps">
+    <div class="weatherApps" :class="weatherChangeBackground">
       <div class="mainForm form-control">
         <form @submit.prevent="searchWeather">
           <!-- <input type="text" v-model="city" />
@@ -69,7 +69,7 @@ export default {
     const weather = ref("");
     const cityName = ref("");
     const error = ref("");
-    const weatherChangeBackground = ref('weatherApps')
+    const weatherChangeBackground = ref("w");
 
     const api_url = computed(() => {
       return `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&appid=${api_key.value}`;
@@ -86,9 +86,11 @@ export default {
     // });
     watch(weather, (newWeather) => {
       if (newWeather === "Clouds") {
+        weatherChangeBackground.value = "cloudsBackground";
         console.log("fdasfasdfasd");
       } else {
         console.log("1111111");
+        weatherChangeBackground.value = "weatherApps";
       }
     });
 
@@ -139,6 +141,12 @@ export default {
   color: white;
   box-shadow: 11px 11px 22px #797979, -11px -11px 22px #ffffff;
 }
+.cloudsBackground {
+  background-color: red;
+}
+.rainBackground {
+  background-color: pink;
+}
 input {
   height: 5vh;
   border-radius: 5px;
@@ -148,7 +156,6 @@ input {
   padding: 20px;
   width: 30vw;
 }
-
 
 /* form-control CSS */
 
