@@ -61,7 +61,7 @@ export default {
 }
 .container {
   width: 100%;
-  margin-left: 4%;
+  margin-left: 5%;
   transition: .4s;
 }
 .sidebarContainer {
@@ -83,7 +83,7 @@ export default {
   transform: translateX(-100%);
 }
 .paddingLeft {
-  padding-left: 5.1%;
+  padding-left: 6%;
 }
 .bx {
   cursor: pointer;

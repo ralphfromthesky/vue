@@ -1,12 +1,11 @@
 <template>
-  <div class="mainBody">
-    <!-- <todoAppsVue class="todos"/>  -->
+  <div class="mainBody" :style="{backgroundColor: backGroundChange}">
        <RouterView />
-
   </div>
 </template>
 
 <script>
+import { inject, ref } from "vue";
 import todoAppsVue from "../views/todoApps.vue";
 
 export default {
@@ -14,6 +13,11 @@ export default {
   components: {
     todoAppsVue,
   },
+  inject:['backGroundChange'],
+  setup () {
+    return {
+    }
+  }
 };
 </script>
 
@@ -23,7 +27,16 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  
 
 }
-
+.cloudsBackground {
+  background-image: url("../images/cloudWeather.jpg");
+}
+.rainBackground {
+  background-image: url("../images/mobileRain.jpg");
+}
+.clearBackground {
+  background-image: url("../images/clearMobile.jpg");
+}
 </style>

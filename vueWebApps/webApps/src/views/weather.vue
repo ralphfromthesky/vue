@@ -23,7 +23,15 @@
           </div>
         </form>
       </div>
-      <div class="cityDetail">{{ cityName }} {{ temp }} {{ weather }}</div>
+      <div class="cityDetail">
+        <h3>{{ cityName }}</h3>
+        <h1>{{ weather }}</h1>
+        <h1>{{ temp }}</h1>
+
+        <div class="imageDiv">
+          <img :src="weatherImage" alt="" />
+        </div>
+      </div>
     </div>
     <div class="description">
       <h3>
@@ -58,10 +66,12 @@
 </template>
 
 <script>
-import { computed, ref, watch } from "vue";
+import { computed, ref, watch, provide } from "vue";
 import axios from "axios";
 export default {
   name: "weather-apps",
+
+  provide: { backGroundChange: "black" },
   setup() {
     const city = ref("");
     const api_key = ref("ae3335d94a1cbbff33e8ba9bab5de492");
@@ -69,30 +79,39 @@ export default {
     const weather = ref("");
     const cityName = ref("");
     const error = ref("");
-    const weatherChangeBackground = ref("w");
+    const weatherChangeBackground = ref("weatherApps");
+    const weatherImage = ref("");
 
     const api_url = computed(() => {
       return `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&appid=${api_key.value}`;
     });
 
-    //     const weatherChangeBackground = computed(() => {
-    //   if (weather.value === "Clouds") {
-    //     console.log('fasdfasdfsdfs');
-    //     return 'clouds-background';
-    //   } else {
-    //     console.log('No clouds');
-    //     return 'default-background';
-    //   }
-    // });
     watch(weather, (newWeather) => {
       if (newWeather === "Clouds") {
         weatherChangeBackground.value = "cloudsBackground";
-        console.log("fdasfasdfasd");
-      } else {
-        console.log("1111111");
-        weatherChangeBackground.value = "weatherApps";
+        weatherImage.value = "./src/images/cloudy.png";
+        console.log("Clouds");
+      } else if (newWeather === "Rain") {
+        weatherChangeBackground.value = "rainBackground";
+        weatherImage.value = "./src/images/rain.png";
+
+        console.log("Rains");
+      } else if (newWeather === "Clear") {
+        weatherChangeBackground.value = "clearBackground";
+        weatherImage.value = "./src/images/cle.png";
+
+        console.log("Clear");
       }
     });
+
+    // const celsiusTemp = computed(() => {
+    //   if (!isNaN(temp.value)) {
+    //     console.log(temp.value)
+    //     return (temp.value - 273.15).toFixed(2); // Convert to Celsius and round to 2 decimal places
+    //   } else {
+    //     return "";
+    //   }
+    // });
 
     const searchWeather = async () => {
       try {
@@ -103,6 +122,13 @@ export default {
         const response = await axios.get(api_url.value);
         console.log(response.data);
         temp.value = response.data.main.temp;
+        if (!isNaN(temp.value)) {
+    //     console.log(temp.value)
+    //     return (temp.value - 273.15).toFixed(2); // Convert to Celsius and round to 2 decimal places
+    //   } else {
+    //     return "";
+    //   }
+
         weather.value = response.data.weather[0].main;
         cityName.value = response.data.name;
       } catch (error) {
@@ -120,6 +146,8 @@ export default {
       searchWeather,
       error,
       weatherChangeBackground,
+      weatherImage,
+      // celsiusTemp,
     };
   },
 };
@@ -138,14 +166,33 @@ export default {
   width: 20vw;
   border-radius: 10px;
   background-color: #314f71;
-  color: white;
+  color: black;
   box-shadow: 11px 11px 22px #797979, -11px -11px 22px #ffffff;
 }
 .cloudsBackground {
-  background-color: red;
+  background-image: url("../images/cloudWeather.jpg");
+  background-size: cover;
+}
+.cityDetail {
+  height: inherit;
+  display: flex;
+  padding: 0 20px;
+  flex-direction: column;
 }
 .rainBackground {
-  background-color: pink;
+  background-image: url("../images/mobileRain.jpg");
+  background-size: cover;
+}
+.clearBackground {
+  background-image: url("../images/clearMobile.jpg");
+  background-size: cover;
+}
+.imageDiv {
+  display: flex;
+  justify-content: center;
+}
+.imageDiv img {
+  height: 130px;
 }
 input {
   height: 5vh;
