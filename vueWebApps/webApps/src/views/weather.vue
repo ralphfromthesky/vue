@@ -26,10 +26,13 @@
       <div class="cityDetail">
         <h3>{{ cityName }}</h3>
         <h1>{{ weather }}</h1>
-        <h1>{{ temp }}</h1>
+        <!-- <h1>{{ temp }}</h1> -->
+        <!-- <h1>{{ celcius }}</h1> -->
 
         <div class="imageDiv">
           <img :src="weatherImage" alt="" />
+          <h1 v-if="temp">{{ deg }}°c</h1>
+          <h1>{{ forecastData }}</h1>
         </div>
       </div>
     </div>
@@ -81,7 +84,9 @@ export default {
     const error = ref("");
     const weatherChangeBackground = ref("weatherApps");
     const weatherImage = ref("");
-
+    const deg = ref("");
+    const forecastData = ref("");
+    const celcius = ref("");
     const api_url = computed(() => {
       return `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&appid=${api_key.value}`;
     });
@@ -94,24 +99,13 @@ export default {
       } else if (newWeather === "Rain") {
         weatherChangeBackground.value = "rainBackground";
         weatherImage.value = "./src/images/rain.png";
-
         console.log("Rains");
       } else if (newWeather === "Clear") {
         weatherChangeBackground.value = "clearBackground";
-        weatherImage.value = "./src/images/cle.png";
-
+        weatherImage.value = "./src/images/clear.png";
         console.log("Clear");
       }
     });
-
-    // const celsiusTemp = computed(() => {
-    //   if (!isNaN(temp.value)) {
-    //     console.log(temp.value)
-    //     return (temp.value - 273.15).toFixed(2); // Convert to Celsius and round to 2 decimal places
-    //   } else {
-    //     return "";
-    //   }
-    // });
 
     const searchWeather = async () => {
       try {
@@ -122,20 +116,23 @@ export default {
         const response = await axios.get(api_url.value);
         console.log(response.data);
         temp.value = response.data.main.temp;
-        if (!isNaN(temp.value)) {
-    //     console.log(temp.value)
-    //     return (temp.value - 273.15).toFixed(2); // Convert to Celsius and round to 2 decimal places
-    //   } else {
-    //     return "";
-    //   }
-
+        celcius.value = temp.value - 273.15;
+        deg.value = Math.trunc(celcius.value);
         weather.value = response.data.weather[0].main;
         cityName.value = response.data.name;
+        // forecastData.value = response.data.list.slice(0, 5);
+        // if (response.data.list && response.data.list.length >= 5) {
+        //   forecastData.value = response.data.list.slice(0, 5);
+        // } else {
+        //   console.error("Invalid or incomplete response data.");
+        // }
+        // console.log(forecastData);
       } catch (error) {
         console.log(`error: ${error}`);
       }
       city.value = "";
     };
+
     return {
       city,
       api_key,
@@ -147,7 +144,9 @@ export default {
       error,
       weatherChangeBackground,
       weatherImage,
-      // celsiusTemp,
+      deg,
+      forecastData,
+      celcius,
     };
   },
 };
@@ -190,6 +189,11 @@ export default {
 .imageDiv {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.imageDiv h1 {
+  font-size: 80px;
 }
 .imageDiv img {
   height: 130px;
