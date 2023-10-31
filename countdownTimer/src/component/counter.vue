@@ -24,12 +24,10 @@
 
 <script>
 import { computed, onMounted, ref } from "vue";
-import todoAppVue from "./todoApp.vue";
 
 export default {
   name: "CounterTimer",
   components: {
-    todoAppVue,
   },
   setup() {
     const displayDays = ref(0);

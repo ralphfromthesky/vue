@@ -1,21 +1,24 @@
 <template>
-  <div class="mainBody" :style="{backgroundColor: backGroundChange}">
-       <RouterView />
+  <div class="mainBody">
+       <RouterView/>
+       <animatedParticleVue class="particle"/>
   </div>
 </template>
 
 <script>
-import { inject, ref } from "vue";
-import todoAppsVue from "../views/todoApps.vue";
+import { ref } from "vue";
+import animatedParticleVue from '../views/animatedParticle.vue';
 
 export default {
   name: "main-body",
   components: {
-    todoAppsVue,
+    animatedParticleVue
   },
-  inject:['backGroundChange'],
   setup () {
+    const show = ref(false)
     return {
+
+      show
     }
   }
 };
@@ -27,16 +30,13 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  
-
+  padding: 20px 20px;
+  position: relative;
 }
-.cloudsBackground {
-  background-image: url("../images/cloudWeather.jpg");
-}
-.rainBackground {
-  background-image: url("../images/mobileRain.jpg");
-}
-.clearBackground {
-  background-image: url("../images/clearMobile.jpg");
+.particle {
+    position: absolute;
+    z-index: -1;
+    transform: translateY(-2%);
+    width: 100%;
 }
 </style>

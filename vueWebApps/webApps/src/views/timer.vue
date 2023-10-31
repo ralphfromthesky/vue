@@ -97,6 +97,14 @@ export default {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    height: 100%;
+    width: 100%;
+    background-image: url('../images/christmas.jpg');
+    background-position: center center;
+    background-size: cover;
+    box-shadow:  28px 28px 14px #8b8b8b,
+             -28px -28px 14px #ffffff;
+
   }
 .container {
   display: flex;
@@ -113,6 +121,7 @@ export default {
   border-radius: 20px;
   white-space: nowrap;
   border: 2px solid black;
+  
 }
 .day small {
   margin-left: 20px;

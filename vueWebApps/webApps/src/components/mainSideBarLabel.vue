@@ -1,6 +1,6 @@
 <template>
   <div class="mainSidebarLabel">
-    <div class="mainSidebarLabelBx">
+    <!-- <div class="mainSidebarLabelBx">
       <h1>VUE JS apps</h1>
       <h1>
         <i
@@ -9,9 +9,14 @@
           @click="$emit('slideThisBack')"
         ></i>
       </h1>
-    </div>
+    </div> -->
     <div class="label">
-      <h2>Home</h2>
+      <i
+        class="bx bx-menu"
+        id="sidebarIcon"
+        @click="$emit('slideThisBack')"
+      ></i>
+      <cloudBackgroundVue class="cloudBg" />
       <h2>Todo apps</h2>
       <router-link to="/calculator"> <h2>Calculator</h2> </router-link>
       <h2>Weather App</h2>
@@ -23,9 +28,14 @@
 </template>
 
 <script>
+import cloudBackgroundVue from "../views/cloudBackground.vue";
+
 export default {
   name: "sidebar-label",
   emits: ["slideThisBack"],
+  components: {
+    cloudBackgroundVue,
+  },
 };
 </script>
 
@@ -33,10 +43,8 @@ export default {
 .mainSidebarLabel {
   height: 100vh;
   width: 10vw;
-background: #e0e0e0;
-box-shadow:  20px 20px 60px #bebebe,
-             -20px -20px 60px #ffffff;
-}
+  box-shadow:  17px 17px 15px #868686,
+             -17px -17px 15px #ffffff;}
 .mainSidebarLabelBx {
   display: flex;
   justify-content: end;
@@ -54,6 +62,13 @@ box-shadow:  20px 20px 60px #bebebe,
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  position: relative;
+}
+
+.cloudBg {
+  position: absolute;
+  z-index: -1;
+  height: 100%;
 }
 </style>

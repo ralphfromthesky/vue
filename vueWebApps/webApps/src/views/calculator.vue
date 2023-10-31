@@ -25,11 +25,11 @@
       </div>
     </div>
     <div class="descriptions">
-      <h3>
-        Calculator <br> <br> This sleek and user-friendly calculator provides you with
+      <p>
+        <b> Calculator</b> <br> <br> This sleek and user-friendly calculator provides you with
         essential mathematical functions at your fingertips. It allows you to
         perform addition, subtraction, multiplication, and division, making it
-        perfect for both simple and complex calculations. <br><br> Key Features: <br><br> Clear
+        perfect for both simple and complex calculations. <br><br><b> Key Features:</b> <br><br> Clear
         (AC): Reset your calculations with a single click. <br> Sign (+/-): Quickly
         switch between positive and negative numbers. <br> Percent (%): Calculate
         percentages effortlessly. <br> Operators: Addition (+), Subtraction (-),
@@ -39,7 +39,7 @@
         calculations at the press of a button. Whether you need to crunch
         numbers for work, school, or everyday tasks, this calculator simplifies
         the process, ensuring accurate results every time.
-      </h3>
+      </p>
     </div>
   </div>
 </template>

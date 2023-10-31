@@ -80,7 +80,7 @@ export default {
   transform: translateX(100%);
 }
 .slideBackward {
-  transform: translateX(-100%);
+  transform: translateX(-120%);
 }
 .paddingLeft {
   padding-left: 6%;

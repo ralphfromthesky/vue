@@ -54,7 +54,7 @@ export default {
     const rotate = ref(true);
     const currentIndex = ref(0);
 
-    const playAudio = (audioUrl, title, artist, img) => {
+    const playAudio = (audioUrl, title, artist, audioImg) => {
       if (audioPlayer.value) {
         audioPlayer.value.src = audioUrl;
         artistName.value = artist;

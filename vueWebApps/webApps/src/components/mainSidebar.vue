@@ -3,7 +3,6 @@
     <div class="sidebarBx">
       <i class="bx bx-menu" id="sidebarIcon" @click="$emit('slideThis')"></i>
     </div>
-
     <div class="sideBarIcon">
       <router-link to="/home">
         <i class="bx bx-home"></i>
@@ -45,8 +44,8 @@ export default {
 .sidebar {
   height: 100vh;
   width: 4vw;
-box-shadow:  20px 20px 60px #bebebe,
-             -20px -20px 60px #ffffff;
+  box-shadow:  17px 17px 15px #868686,
+             -17px -17px 15px #ffffff;  
 }
 .sidebarBx {
   display: flex;
@@ -54,7 +53,7 @@ box-shadow:  20px 20px 60px #bebebe,
 }
 .sideBarIcon {
   width: 100%;
-  height: 100%;
+  height: 93%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;

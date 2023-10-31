@@ -1,5 +1,5 @@
 <template>
-  <div class="mainContainer">
+  <div class="mainContainer" :class="defaultBg">
     <div class="weatherApps" :class="weatherChangeBackground">
       <div class="mainForm form-control">
         <form @submit.prevent="searchWeather">
@@ -36,7 +36,7 @@
         </div>
       </div>
     </div>
-    <div class="description">
+    <div class="description" :class="changeTextColor">
       <h3>
         Description: <br />
         Weather App
@@ -60,16 +60,14 @@
         User-Friendly: A clean and intuitive interface ensures a seamless user
         experience. <br />
         <br />
-        Whether you're planning your day, packing for a trip, or just curious
-        about the weather in different parts of the world, this weather app has
-        you covered.
+        <b> Using Composition API: watcher, ref, computed.</b>
       </p>
     </div>
   </div>
 </template>
 
 <script>
-import { computed, ref, watch, provide } from "vue";
+import { computed, ref, watch } from "vue";
 import axios from "axios";
 export default {
   name: "weather-apps",
@@ -87,23 +85,54 @@ export default {
     const deg = ref("");
     const forecastData = ref("");
     const celcius = ref("");
+    const dailyWeather = ref([]);
+    const defaultBg = ref('');
+    const changeTextColor = ref('');
+
     const api_url = computed(() => {
       return `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&appid=${api_key.value}`;
     });
+
+    // const api_dailyWeather = computed(() => {
+    //   return `https://api.openweathermap.org/data/2.5/onecall?lat=${city.value.coord.lat}&lon=${city.value.coord.lon}&exclude=current,minutely,hourly&appid=${api_key.value}`;
+    // });
+
+    // const getDailyWeather = async (lat, lon) => {
+    //   try {
+    //     const response = await axios.get(
+    //       `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly&appid=${api_key.value}`
+    //     );
+    //     console.log(response.data);
+    //     dailyWeather.value = response.data.daily;
+    //   } catch (error) {
+    //     console.error(`Error: ${error}`);
+    //   }
+    // };
 
     watch(weather, (newWeather) => {
       if (newWeather === "Clouds") {
         weatherChangeBackground.value = "cloudsBackground";
         weatherImage.value = "./src/images/cloudy.png";
+        defaultBg.value = 'cloudBg'
+        changeTextColor.value = 'cloudTextColor'
         console.log("Clouds");
       } else if (newWeather === "Rain") {
         weatherChangeBackground.value = "rainBackground";
         weatherImage.value = "./src/images/rain.png";
+        defaultBg.value = 'rainBg';
+        changeTextColor.value = 'rainTextColor';
         console.log("Rains");
       } else if (newWeather === "Clear") {
         weatherChangeBackground.value = "clearBackground";
         weatherImage.value = "./src/images/clear.png";
+        defaultBg.value = 'clearBg'
         console.log("Clear");
+      }
+      else if (newWeather === "Mist") {
+        weatherChangeBackground.value = "mistBackground";
+        weatherImage.value = "./src/images/mistWeatherBg.jpg";
+        defaultBg.value = 'mistBg'
+        console.log("Mist");
       }
     });
 
@@ -115,20 +144,21 @@ export default {
         }
         const response = await axios.get(api_url.value);
         console.log(response.data);
-        temp.value = response.data.main.temp;
-        celcius.value = temp.value - 273.15;
-        deg.value = Math.trunc(celcius.value);
-        weather.value = response.data.weather[0].main;
-        cityName.value = response.data.name;
-        // forecastData.value = response.data.list.slice(0, 5);
-        // if (response.data.list && response.data.list.length >= 5) {
-        //   forecastData.value = response.data.list.slice(0, 5);
-        // } else {
-        //   console.error("Invalid or incomplete response data.");
-        // }
-        // console.log(forecastData);
+        if (response.data.coord) {
+          temp.value = response.data.main.temp;
+          celcius.value = temp.value - 273.15;
+          deg.value = Math.trunc(celcius.value);
+          weather.value = response.data.weather[0].main;
+          cityName.value = response.data.name;
+          // const lat = response.data.coord.lat;
+          // const lon = response.data.coord.lon;
+          // getDailyWeather(lat, lon);
+        } else {
+          console.log("invalid or incomplete response data");
+        }
       } catch (error) {
         console.log(`error: ${error}`);
+        alert('please input city')
       }
       city.value = "";
     };
@@ -147,6 +177,10 @@ export default {
       deg,
       forecastData,
       celcius,
+      // api_dailyWeather,
+      dailyWeather,
+      defaultBg,
+      changeTextColor
     };
   },
 };
@@ -159,18 +193,30 @@ export default {
 }
 .mainContainer {
   display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  box-shadow:  28px 28px 14px #8b8b8b,
+             -28px -28px 14px #ffffff;
 }
 .weatherApps {
   height: 60vh;
   width: 20vw;
   border-radius: 10px;
-  background-color: #314f71;
+  background-image: url("../images/defaultBg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
   color: black;
   box-shadow: 11px 11px 22px #797979, -11px -11px 22px #ffffff;
 }
 .cloudsBackground {
   background-image: url("../images/cloudWeather.jpg");
   background-size: cover;
+}
+.cloudTextColor {
+  color: black;
 }
 .cityDetail {
   height: inherit;
@@ -182,9 +228,35 @@ export default {
   background-image: url("../images/mobileRain.jpg");
   background-size: cover;
 }
+.rainTextColor {
+  color: white;
+}
 .clearBackground {
   background-image: url("../images/clearMobile.jpg");
   background-size: cover;
+}
+.clearBg {
+background-image: url('../images/cloudBg.jpg');
+background-size: cover;
+
+}
+.mistBackground {
+  background-image: url("../images/mistWeatherbg.jpg");
+  background-size: cover;
+}
+.mistBg {
+  background-image: url("../images/mistBg.jpg");
+  background-size: cover;
+}
+.rainBg {
+  background-image: url('../images/raingBg.jpg');
+background-size: cover;
+}
+.cloudBg {
+  background-image: url('../images/clearBg.jpg');
+background-size: cover;
+background-position: center;
+
 }
 .imageDiv {
   display: flex;
@@ -218,18 +290,18 @@ input {
 .form-control input {
   background-color: transparent;
   border: 0;
-  border-bottom: 2px #fff solid;
+  border-bottom: 2px solid black;
   display: block;
   width: 100%;
   padding: 15px 0;
   font-size: 18px;
-  color: #fff;
+  color: black;
 }
 
 .form-control input:focus,
 .form-control input:valid {
   outline: 0;
-  border-bottom-color: lightblue;
+  border-bottom-color: black;
 }
 
 .form-control label {
@@ -243,13 +315,13 @@ input {
   display: inline-block;
   font-size: 18px;
   min-width: 5px;
-  color: #fff;
+  color: black;
   transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 .form-control input:focus + label span,
 .form-control input:valid + label span {
-  color: lightblue;
+  color: black;
   transform: translateY(-30px);
 }
 </style>
