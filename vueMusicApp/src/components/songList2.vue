@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { inject, reactive, ref } from "vue";
+import { inject, ref } from "vue";
 import songPlayer2Vue from "./songPlayer2.vue";
 export default {
   name: "ParentSongList",
