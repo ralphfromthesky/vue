@@ -60,7 +60,7 @@
         User-Friendly: A clean and intuitive interface ensures a seamless user
         experience. <br />
         <br />
-        <b> Using Composition API: watcher, ref, computed.</b>
+        <b> Using Composition API: watcher, ref, computed and axios</b>
       </p>
     </div>
   </div>
