@@ -1,5 +1,4 @@
 <template>
-    
   <div class="theRealMainTodo">
     <div class="mainTodo">
       <div class="todolabel">
@@ -16,10 +15,15 @@
       </div>
     </div>
     <div class="description">
-      
-      <p> <span>Description:</span>
-        I use composition API, ref, watcher and onMounted. <br> just a simple Todo
-        apps that saves in local storage that is persistent <br> even when you close the tab.
+      <p>
+        <span>Description:</span> <br> <br>The Todo application is a simple web
+        application built using Vue.js, a popular JavaScript framework. It
+        allows users to create, manage, and keep track of their tasks or to-do
+        items. The application stores user data, including the user's name and a
+        list of todos, in the browser's local storage so that the data persists
+        even after the user closes or refreshes the page. <br> <br>
+
+        <span>Using composition API, watcher, ref, onMounted, v-model.</span>
       </p>
     </div>
   </div>
@@ -79,7 +83,14 @@ export default {
 
     onMounted(() => {
       name.value = localStorage.getItem("name") || "";
-      todos.value = JSON.parse(localStorage.getItem("todos") || []);
+      const storedTodos = localStorage.getItem("todos");
+      if (storedTodos) {
+        try {
+          todos.value = JSON.parse(storedTodos);
+        } catch (error) {
+          console.error("Error parsing JSON from localStorage:", error);
+        }
+      }
     });
 
     return {
@@ -97,7 +108,15 @@ export default {
 .theRealMainTodo {
   display: flex;
   width: 60vw;
-  justify-content: space-evenly;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://designstripe-secure.imgix.net/scene-snapshots/f3514252-6d16-4b20-a425-e23cb203fd96/1674867962894/default?auto=format&fit=clip&h=850&mark=%2Fwatermark.png&markfit=max&markalign=middle%2Ccenter&markw=1&markh=1&s=2b58ef2a29071aa7ee44fe693168a684");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 20px 20px 9px #a1a1a1, -20px -20px 9px #ffffff;
 }
 .mainTodo {
   height: 50vh;
@@ -105,7 +124,7 @@ export default {
   border-radius: 10px;
   border-radius: 50px;
   border-radius: 9px;
-  box-shadow: 7px 7px 14px #f8f5f5, -7px -7px 14px #ffffff;
+  box-shadow: 20px 20px 9px #a1a1a1, -20px -20px 9px #ffffff;
 }
 .todolabel {
   display: flex;
@@ -135,12 +154,17 @@ input {
   border-radius: 5px;
 }
 .description {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  width: 30%;
 }
 .description span {
-    font-size: 20px;
-    font-weight: 800;
+  font-size: 20px;
+  font-weight: 800;
+}
+p {
+  font-weight: 800;
 }
 </style>

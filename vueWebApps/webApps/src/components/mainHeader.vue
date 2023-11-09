@@ -6,6 +6,7 @@
     <div class="account">
       <i class="bx bxs-user-plus"></i>
        <i class="bx bx-globe"></i>
+       
     </div>
 
     <!-- <animatedParticleVue class="particle"/> -->

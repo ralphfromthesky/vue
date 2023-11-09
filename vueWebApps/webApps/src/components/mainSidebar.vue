@@ -7,7 +7,7 @@
       <router-link to="/home">
         <i class="bx bx-home"></i>
       </router-link>
-      <!-- <router-link to="/todo"><i class="bx bx-edit"></i></router-link> -->
+      <router-link to="/todoAndSaved"><i class="bx bx-edit"></i></router-link>
       <router-link to="/calculator">
         <i class="bx bx-calculator"></i>
       </router-link>

@@ -12,7 +12,7 @@
         effortlessly. Your go-to companion for all your musical moments.
       </p>
       <br>
-      <h3>Using Compostion API, ref, component events-emits and props.</h3>
+      <h3>Using Compostion API, ref, watch, component events-emits, onMounted and props.</h3>
     </div>
   </div>
 </template>
@@ -39,11 +39,13 @@ export default {
   gap: 20px;
 }
 .main-container {
-  border: 2px solid red;
   width: 20vw;
   height: 60vh;
   padding: 20px;
   border-radius: 10px;
+  background-color: black;
+  box-shadow:  20px 20px 22px #828282,
+             -20px -20px 22px #ffffff;
 }
 .description {
   width: 25%;
