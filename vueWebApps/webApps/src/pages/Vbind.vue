@@ -42,6 +42,7 @@
   <h1 :class="{'trueClass': objectClass, 'applyThisIfTrue': !isDisabled}"> dynamic class condition</h1>
   <h1>this is sample of interpolation and the name is {{ namers }}</h1>
   <h1 :class="ternaryClass ? 'ternaryClass': ' applyThisIfTrue'">example of appying class ternay condition</h1>
+  <h1 :class="{'dynamic1' : dynamic1, 'dynamic2': !dynamic2}">this is dynamic class binding</h1>
 </div>
 </template>
 
@@ -56,7 +57,7 @@ export default {
       bindTest: "this is the v-text bind test",
       thisHtml: "<b>this is bold</b>",
       thisVbind: "this is v-bind",
-      isDisabled: false,
+      isDisabled: true,
       status: "success",
       isTestStyle: true,
       isCondition: false,
@@ -69,13 +70,14 @@ export default {
       },
       dataPropertyStyle2: {
         fontSize: "2rem",
-        backgroundColor: "green",
+        backgroundColor: "purple",
       },
       ternaryCondition: false,
       namers: 'gadwin santolorin',
-      methods: {
-        
-      }
+      methods: { 
+      },
+      dynamic1: true,
+      dynamic2: true
     };
   },
 };
@@ -122,5 +124,11 @@ h2 h3 {
   background-color: yellow;
   border: 2px solid red;
   color: blue;
+}
+.dynamic1 {
+  color: red;
+}
+.dynamic2 {
+border: 2px solid orangered;
 }
 </style>

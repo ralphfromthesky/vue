@@ -3,6 +3,7 @@
     <PropsAndCompositionAPIChild
       messageFromParentComponent="this is the message from parent Component"
       AnotherMessage="ralph santolorin"
+      :sampleDataBindingProsp="taeKa"
     />
     <hr />
 
@@ -51,6 +52,7 @@ export default {
     const firstname = ref("ralph rigor");
     const lastname = ref("santolorin");
     const messageFromSky = ref('how are you!!!!!')
+    const taeKa = ref('tae ka tlga!!!!')
     const dataList = reactive({
       name: 'ralph santolorin',
       age: '39',
@@ -80,7 +82,8 @@ export default {
       dataList,
       newMessage,
       messageFromSky,
-      newData
+      newData,
+      taeKa
     };
   },
 };

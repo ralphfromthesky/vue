@@ -1,10 +1,12 @@
 <template>
-  <!-- <button @click="getPosts">load Post</button> for manually loading the data-->
-  <h3 v-if="errorMsg">{{ errorMsg }}</h3>
-  <div v-for="post in posts" :key="post.id">
-    <h3>{{ post.id }} {{ post.title }}</h3>
-    <p>{{ post.body }}</p>
-    <hr />
+  <div>
+    <!-- <button @click="getPosts">load Post</button> for manually loading the data-->
+    <h3 v-if="errorMsg">{{ errorMsg }}</h3>
+    <div v-for="post in posts" :key="post.id">
+      <h3>{{ post.id }} {{ post.title }}</h3>
+      <p>{{ post.body }}</p>
+      <hr />
+    </div>
   </div>
 </template>
 
@@ -19,7 +21,7 @@ export default {
   data() {
     return {
       posts: [],
-      errorMsg: '',
+      errorMsg: "",
     };
   },
   methods: {
@@ -38,4 +40,6 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+
+</style>

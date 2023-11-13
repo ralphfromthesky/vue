@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>this data comes from sampleData.js </h1> <br>
     <div v-for="data in sampleData" :key="data.name">
       <h1>
         {{ data.id }} - {{ data.name }} - {{ data.age }} {{ data.location }}

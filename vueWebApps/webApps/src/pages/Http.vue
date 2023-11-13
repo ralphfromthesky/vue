@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="http">
     <HttpPostRequest/>
     <HttpGetRequest/>
 </div>
@@ -21,4 +21,13 @@ export default {
 };
 </script>
 
-<style></style>
+
+<style scoped>
+.http {
+  padding: 0 15%;
+  overflow: hidden;
+  height: 65vh;
+  border: 2px solid rgb(82, 79, 79);
+  overflow: scroll;
+}
+</style>

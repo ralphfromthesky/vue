@@ -21,7 +21,7 @@ import HttpGetRequest from '../pages/HttpGetRequest.vue'
 import Http from '../pages/Http.vue'
 import PropsAndCompositionAPIParent from '../pages/PropsAndCompositionAPIParent.vue';
 import PropsParent from '../pages/PropsParent.vue'
-import ProvideAndInjectA from '../pages/ProvideAndInjectA.vue'
+import ProvideAndInjectParenComponent from '../pages/ProvideAndInjectParenComponent.vue'
 import ReplacingDataWithRef from '../pages/ReplacingDataWithRef.vue'
 import ComponentsEventsParents from '../pages/ComponentsEventsParents.vue'
 import SlotsParent from '../pages/SlotsParent.vue';
@@ -147,7 +147,7 @@ const router = createRouter({
       }, {
         path: '/provideInject',
         name: 'provideinject',
-        component: ProvideAndInjectA
+        component: ProvideAndInjectParenComponent
       },
       {
         path: '/ReplacingDataWithRef',

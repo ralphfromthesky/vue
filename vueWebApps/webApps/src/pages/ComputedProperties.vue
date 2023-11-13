@@ -1,16 +1,20 @@
 <template>
-  <h1>my complete name is - {{ firstName }} {{ lastName }} -</h1>
-  <h1>my complete name is from computed {{ fullName }}</h1>
-  <h1>my complete name is from method {{ thisFullName() }}</h1>
-  <h1>the total is {{ total }}</h1>
-  <button @click="items.push({ id: 4, items: 'guitar', price: 500 })">
-    total
-  </button>
+  <div>
+    <h1>my complete name is - {{ firstName }} {{ lastName }} -</h1>
+    <h1>my complete name is from computed {{ fullName }}</h1>
+    <h1>my complete name is from method {{ thisFullName() }}</h1>
+    <h1>the total is {{ total }}</h1>
+    <button @click="items.push({ id: 4, items: 'guitar', price: 500 })">
+      total
+    </button>
 
-  <template v-for="item in items" :key="item.id">
-    <h1 v-if="item.price > 100"> {{ item.items}} {{ item.price }}</h1> 
-    <h1 v-for="item in expensiveItems" :key="item.id">{{ item.items }} {{item.price  }}</h1>
-  </template>
+    <template v-for="item in items" :key="item.id">
+      <h1 v-if="item.price > 100">{{ item.items }} {{ item.price }}</h1>
+      <h1 v-for="item in expensiveItems" :key="item.id">
+        {{ item.items }} {{ item.price }}
+      </h1>
+    </template>
+  </div>
 </template>
 
 <script>
@@ -54,10 +58,10 @@ export default {
     },
     total() {
       return this.items.reduce((a, b) => (a = a + b.price), 0);
-      },
-      expensiveItems() {
-          return this.items.filter(a => a.price > 100);
-    }
+    },
+    expensiveItems() {
+      return this.items.filter((a) => a.price > 100);
+    },
   },
 };
 </script>

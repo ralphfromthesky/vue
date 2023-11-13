@@ -15,11 +15,13 @@
     <!-- the id="myArticle" is the non-props attribute that will be passed from component itself to it element -->
     <PropsAndValidation id="myArticle" title="this is String titlle" :likes="55" :ishonest="false"/>
     <h1>this is my name {{ name }}</h1>
+
+    <PropsChild :data="sameDataProps"/>
   </div>
 </template>
 
 <script>
-import { ref } from "vue";
+import { reactive, ref } from "vue";
 import PropsAndValidation from "./PropsAndValidation.vue";
 import PropsChild from "./PropsChild.vue";
 export default {
@@ -37,13 +39,19 @@ export default {
     const mynumber = ref("09617587967")
     const thisIsSample = ref('sampleLang')
     const name = ref('ralph')
+    const sameDataProps = reactive({
+      name: 'ralph',
+      age: '39',
+      location: 'navotas'
+    })
 
     return {
       myname,
       mymessage,
       mynumber,
       thisIsSample,
-      name
+      name,
+      sameDataProps
     };
   },
 };
