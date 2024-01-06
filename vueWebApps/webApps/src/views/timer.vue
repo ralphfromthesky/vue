@@ -99,7 +99,7 @@ export default {
     flex-direction: column;
     height: 100%;
     width: 100%;
-    background-image: url('../images/christmas.jpg');
+    background-image: url('/images/christmas.jpg');
     background-position: center center;
     background-size: cover;
     box-shadow:  28px 28px 14px #8b8b8b,
@@ -139,6 +139,22 @@ h3 {
   justify-content: center;
   align-items: center;
   padding: 20px;
+}
+@media screen and (max-width: 375px) {
+  h1 {
+    font-size: 1rem;
+  }
+  .container {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  small {
+    margin: 0 !important;
+  }
+  .day {
+text-align: center;
+margin-left: 10px;
+  }
 }
 </style>
   

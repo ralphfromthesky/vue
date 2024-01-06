@@ -6,6 +6,8 @@ import { musicList } from './musicList'
 import { dataList } from './dataListSample'
 import { employees} from './employee'
 import {datas} from './anotherSampleOfData'
+import './globalCss.css'
+import store from './store/store'
 
 // createApp(App).mount('#app')
 
@@ -26,3 +28,5 @@ app.provide('employee', employee)
 
 const anotherSampleOfData = ref(datas)
 app.provide('datas', anotherSampleOfData)
+
+app.use(store)

@@ -15,14 +15,17 @@
         ><i class="bx bxs-cloud-lightning"></i
       ></router-link>
       <router-link to="/music"> <i class="bx bxl-deezer"></i> </router-link>
-      <router-link to="quizz"> <i class="bx bx-task"></i> </router-link>
+      <router-link to="/nameVar"><i class='bx bxs-calendar-exclamation' ></i></router-link>
+      <router-link to="/quizz"> <i class="bx bx-task"></i> </router-link>
       <router-link to="/timer"><i class="bx bxs-watch"></i> </router-link>
+      <router-link to="/vuex"><i class='bx bxs-castle'></i></router-link>
+      <router-link to="/ghub"><i class='bx bxl-github'></i></router-link>
     </div>
   </div>
 </template>
 
 <script>
-export default {
+export default {  
   name: "sidebar",
   emits: ["slideThis"],
   setup() {
@@ -43,9 +46,12 @@ export default {
 
 .sidebar {
   height: 100vh;
+
+  background-color: white;
   width: 4vw;
   box-shadow:  17px 17px 15px #868686,
              -17px -17px 15px #ffffff;  
+             
 }
 .sidebarBx {
   display: flex;
@@ -58,5 +64,10 @@ export default {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+}
+@media screen and (max-width: 430px) {
+  .sidebar {
+    width: 14vw;
+    }
 }
 </style>

@@ -1,6 +1,9 @@
 <template>
-  <div>
+  <div class="mainHttp">
     <!-- <button @click="getPosts">load Post</button> for manually loading the data-->
+    <div class="desc">
+      <h1>this data comes from https://jsonplaceholder.typicode.com/posts</h1> <br><br>
+    </div>
     <h3 v-if="errorMsg">{{ errorMsg }}</h3>
     <div v-for="post in posts" :key="post.id">
       <h3>{{ post.id }} {{ post.title }}</h3>
@@ -41,5 +44,18 @@ export default {
 </script>
 
 <style scoped>
+.mainHttp {
+height: 60vh;
+  border: 2px solid gray;
+  overflow: scroll;
+  padding: 20px;
+  border-radius: 5px;
+}
+.desc {
+  text-align: center;
+}
+h1 {
+  font-size: 20px;
+}
 
 </style>

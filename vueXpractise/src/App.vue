@@ -1,18 +1,26 @@
 <template>
   <div>
-    <vueXpracticeVue />
+    <productOneVue/>
+    <productTwoVue/>
   </div>
 </template>
 
 <script>
-import vueXpracticeVue from "./components/vueXpractice.vue";
+import productOneVue from "./components/productOne.vue";
+import productTwoVue from "./components/productTwo.vue";
 
 export default {
   components: {
-    vueXpracticeVue,
+    productOneVue,
+    productTwoVue,
+  },
+  setup() {
+
+    return {
+      
+    };
   },
 };
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>
